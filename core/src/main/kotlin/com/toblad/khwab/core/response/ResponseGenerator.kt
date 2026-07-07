@@ -6,7 +6,7 @@ class ResponseGenerator {
 
     fun generate(intent: IntentType, target: String): String {
 
-        return when(intent) {
+        return when (intent) {
 
             IntentType.OPEN_APP ->
                 "Opening $target..."
@@ -14,17 +14,26 @@ class ResponseGenerator {
             IntentType.CALL_CONTACT ->
                 "Calling $target..."
 
+            IntentType.SEND_MESSAGE ->
+                "Sending message to $target..."
+
             IntentType.PLAY_MEDIA ->
                 "Playing $target..."
 
-            IntentType.CLOSE_APP ->
-                "Closing $target..."
+            IntentType.CHANGE_SETTING ->
+                "Changing settings..."
 
-            else ->
+            IntentType.SEARCH_WEB ->
+                "Searching for $target..."
+
+            IntentType.GET_TIME ->
+                "Fetching current time..."
+
+            IntentType.GET_DATE ->
+                "Fetching today's date..."
+
+            IntentType.UNKNOWN ->
                 "Sorry, I don't understand that command yet."
-
         }
-
     }
-
 }
