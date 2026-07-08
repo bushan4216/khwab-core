@@ -1,5 +1,6 @@
 package com.toblad.khwab.core.skill.skills
 
+import com.toblad.khwab.core.model.ActionType
 import com.toblad.khwab.core.model.IntentData
 import com.toblad.khwab.core.model.IntentType
 import com.toblad.khwab.core.model.Plan
@@ -19,7 +20,7 @@ class AppSkill : Skill {
         return Plan(
             steps = listOf(
                 PlanStep(
-                    action = "OPEN_APP",
+                    action = ActionType.OPEN_APP,
                     target = target
                 )
             )
