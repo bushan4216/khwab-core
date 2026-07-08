@@ -31,3 +31,19 @@ Khwab Core is the platform-independent intelligence engine powering the Khwab AI
 - Unit Tests
 
 Khwab Core is designed to be platform-independent and can later be connected to Android, Desktop, Web or other platforms.
+
+---
+
+## Current Status
+
+### Khwab Core v0.4.0
+
+Completed:
+- Foundation
+- Cognition
+- Execution
+- Context
+- Core Integration
+
+Current Milestone:
+A complete offline AI core capable of reasoning, planning, context management, and execution through a modular architecture.

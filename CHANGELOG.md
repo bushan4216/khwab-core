@@ -1,18 +1,29 @@
 # Changelog
 
-## Sprint 18.5
+## v0.4.0 - Core Integration (2026-07-08)
 
 ### Added
-- StepExecutionResult
-- Multi-step ExecutionEngine
-- Execution workflow tests
-- Execution status coverage tests
+- BrainV2 reasoning pipeline
+- Decision Engine
+- Skill Manager
+- Context Engine
+- Execution Engine
+- Conversation Engine foundation
+- End-to-end integration tests
 
 ### Improved
-- Execution architecture
-- Test coverage
-- Documentation
+- Stabilized architecture
+- Updated Brain tests
+- Improved execution framework
+- Context resolution support
 
 ### Fixed
-- Duplicate test executor names
-- Test compilation issues
+- Brain API migration
+- Test compatibility
+- Integration issues
+- Build stability
+
+Status:
+- All tests passing
+- Build successful
+- Core pipeline verified

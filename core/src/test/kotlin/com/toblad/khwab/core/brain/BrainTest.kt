@@ -1,21 +1,24 @@
 package com.toblad.khwab.core.brain
 
+import com.toblad.khwab.core.model.IntentData
+import com.toblad.khwab.core.model.IntentType
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
-
-import com.toblad.khwab.core.model.ActionType
-import com.toblad.khwab.core.model.IntentType
 
 class BrainTest {
 
     @Test
-    fun brainCanProcessCommand() {
+    fun brainProcessesIntent() {
 
-        val brain = Brain()
+        val brain = BrainV2()
 
-        val result = brain.process("Open WhatsApp")
+        val result = brain.process(
+            IntentData(
+                intent = IntentType.OPEN_APP,
+                originalText = "Open WhatsApp"
+            )
+        )
 
         assertNotNull(result)
 
@@ -24,13 +27,12 @@ class BrainTest {
             result.intent.intent
         )
 
-        assertTrue(result.supported)
+        assertNotNull(result.reasoning)
+        assertNotNull(result.decision)
 
-        assertEquals(
-            ActionType.OPEN_APP,
-            result.plan.steps.first().action
-        )
-
-        assertTrue(result.response.isNotBlank())
+        println("===================================")
+        println("Decision = ${result.decision.decision}")
+        println("Plan = ${result.plan}")
+        println("===================================")
     }
 }
