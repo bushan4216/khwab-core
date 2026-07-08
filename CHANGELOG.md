@@ -1,41 +1,30 @@
+# Changelog
 
-# v0.4.0 - Tested Core Architecture
-Release Date: 2026-07-08
+## v0.5.0
 
-## Added
-- Brain decision engine
-- Intent parser
-- Planner and rule engine
-- Response generator
-- Knowledge module
-- Conversation memory
-- Context resolver
-- Reference resolver
-- Command executor interface
-- Mock command executor
-- Demo console
-- Automated Brain tests
+### Added
 
-## Improved
-- Brain architecture separated from execution layer
-- Planning and execution responsibilities isolated
-- Conversation pipeline integrated with Brain
-- Safer Sprint Pack development workflow
-- Incremental build verification after every phase
+- BrainV2
+- Cognitive Pipeline
+- Reasoning Engine
+- Decision Engine
+- Skill Framework
+- Skill Registry
+- Skill Manager
+- AppSkill
+- ActionType enum
+- Type-safe planning
+- Brain tests
+- SkillManager tests
 
-## Testing
-- Added first automated Brain test
-- Verified with Gradle test
-- Verified with Gradle build
+### Improved
 
-## Build Status
-- BUILD SUCCESSFUL
-- TEST SUCCESSFUL
+- Planner migrated to ActionType
+- AppSkill migrated to ActionType
+- Modular architecture
+- Improved testing
 
-## Next Release (v0.5.0)
-- AndroidCommandExecutor
-- khwab-core packaging
-- Khwab3 integration
-- Sherpa voice pipeline
-- Android action execution
+### Verified
 
+- Gradle Build
+- Gradle Test
