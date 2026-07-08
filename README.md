@@ -1,96 +1,33 @@
 # 🌙 Khwab Core
 
-Khwab Core is the platform-independent intelligence engine powering the Khwab AI Assistant.
+Khwab Core is the platform-independent intelligence engine powering the Khwab AI assistant.
 
-It is designed to be:
+## Current Status
 
-- Offline First
-- Modular
-- Testable
-- Platform Independent
-- Extensible
+### Epoch I — Foundation ✅
+- Parser
+- Planner
+- Validator
+- Rule Engine
+- Knowledge
+- Conversation
+- Response Generator
 
----
+### Epoch II — Cognition ✅
+- Reasoning Engine
+- Decision Engine
+- Skill Framework
+- Skill Registry
+- Brain V2
 
-# Vision
+### Epoch III — Execution 🚧
+- Execution Engine
+- Execution Context
+- Step Executor
+- Mock Step Executor
+- Multi-Step Workflow
+- Execution Result
+- Step Execution Result
+- Unit Tests
 
-Khwab aims to become an intelligent offline assistant capable of:
-
-- Understanding natural language
-- Reasoning about user intent
-- Making intelligent decisions
-- Planning actions
-- Executing Android skills
-- Integrating with offline speech recognition
-
----
-
-# Current Architecture
-
-Voice Input
-        │
-        ▼
-Parser
-        │
-        ▼
-Reasoning Engine
-        │
-        ▼
-Decision Engine
-        │
-        ▼
-Skill Manager
-        │
-        ▼
-Planner
-        │
-        ▼
-ActionType
-        │
-        ▼
-Plan
-        │
-        ▼
-Android Executor (Future)
-
----
-
-# Implemented
-
-✅ Parser
-
-✅ Validator
-
-✅ Planner
-
-✅ Knowledge
-
-✅ Conversation Memory
-
-✅ Reasoning Engine
-
-✅ Decision Engine
-
-✅ Skill Framework
-
-✅ BrainV2
-
-✅ ActionType
-
-✅ Tests
-
----
-
-# Build
-
-gradle build
-
-# Run Tests
-
-gradle test
-
----
-
-Current Version
-
-v0.5.0
+Khwab Core is designed to be platform-independent and can later be connected to Android, Desktop, Web or other platforms.

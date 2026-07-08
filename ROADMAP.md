@@ -1,43 +1,26 @@
-# Khwab Roadmap
+# Roadmap
 
-## ✅ Epoch I — Foundation
+## Completed
 
-Completed
+✅ Epoch I - Foundation
 
----
+✅ Epoch II - Cognition
 
-## ✅ Epoch II — Cognition
+🚧 Epoch III - Execution
 
-Completed
+## Upcoming
 
-- BrainV2
-- Reasoning
-- Decision
-- Skill Framework
-- Six Core Skills
+- Execution Queue
+- Retry Policy
+- Failure Policy
+- Execution History
+- Metrics
+- Android Step Executors
 
----
+## Future
 
-## 🚧 Sprint 18
+Epoch IV - Android Integration
 
-Android Executor
+Epoch V - Voice Platform
 
-- Executor interface
-- Android executor
-- Plan execution
-- App launching
-- Calling
-- Messaging
-- Media control
-
----
-
-## Sprint 19
-
-Sherpa Integration
-
----
-
-## Sprint 20
-
-Khwab 3 Alpha
+Epoch VI - Memory & Learning

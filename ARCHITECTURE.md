@@ -1,35 +1,25 @@
-# Khwab Core Architecture
+# Architecture
 
-Voice
-   │
-   ▼
-Parser
-   │
-   ▼
-BrainV2
-   │
-   ├── Reasoning Engine
-   ├── Decision Engine
-   └── Skill Manager
-            │
-            ▼
-      Skill Registry
-            │
-            ├── AppSkill
-            ├── CallSkill
-            ├── MessageSkill
-            ├── MediaSkill
-            ├── SearchSkill
-            └── SettingsSkill
-                    │
-                    ▼
-                 Planner
-                    │
-                    ▼
-                ActionType
-                    │
-                    ▼
-                  Plan
-                    │
-                    ▼
-          Android Executor (Sprint 18)
+Brain
+│
+▼
+Plan
+│
+▼
+ExecutionContext
+│
+▼
+ExecutionEngine
+│
+▼
+StepExecutor
+│
+▼
+ExecutionResult
+
+## Design Principles
+
+- Brain never executes actions.
+- ExecutionEngine coordinates workflows.
+- StepExecutor performs individual steps.
+- Platform implementations remain outside khwab-core.

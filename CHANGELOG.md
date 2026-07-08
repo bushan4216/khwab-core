@@ -1,24 +1,18 @@
 # Changelog
 
-## v0.6.0 - Sprint 17
+## Sprint 18.5
 
 ### Added
-
-- CallSkill
-- MessageSkill
-- MediaSkill
-- SearchSkill
-- SettingsSkill
-- Skill integration tests
-- Skill framework documentation
+- StepExecutionResult
+- Multi-step ExecutionEngine
+- Execution workflow tests
+- Execution status coverage tests
 
 ### Improved
+- Execution architecture
+- Test coverage
+- Documentation
 
-- Skill registry expanded
-- BrainV2 now supports six core capabilities
-- Test coverage increased
-
-### Verified
-
-- Gradle build successful
-- Gradle tests successful
+### Fixed
+- Duplicate test executor names
+- Test compilation issues
