@@ -1,10 +1,15 @@
 package com.toblad.khwab.core.skill
 
-import com.toblad.khwab.core.skill.skills.AppSkill
+import com.toblad.khwab.core.skill.skills.*
 
 class SkillRegistry {
 
     val skills: List<Skill> = listOf(
-        AppSkill()
+        AppSkill(),
+        CallSkill(),
+        MessageSkill(),
+        MediaSkill(),
+        SearchSkill(),
+        SettingsSkill()
     )
 }

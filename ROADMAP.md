@@ -1,56 +1,43 @@
 # Khwab Roadmap
 
-## ✅ Epoch I - Foundation
-
-- Parser
-- Planner
-- Validator
-- Knowledge
-- Conversation
-- Response Generator
-- Rule Engine
+## ✅ Epoch I — Foundation
 
 Completed
 
 ---
 
-## ✅ Sprint 16
+## ✅ Epoch II — Cognition
+
+Completed
 
 - BrainV2
-- Reasoning Engine
-- Decision Engine
+- Reasoning
+- Decision
 - Skill Framework
-- ActionType
-- Tests
-
-Completed
+- Six Core Skills
 
 ---
 
-## 🚧 Sprint 17
+## 🚧 Sprint 18
 
-- CallSkill
-- MessageSkill
-- MediaSkill
-- SearchSkill
-- SettingsSkill
+Android Executor
 
----
-
-## Sprint 18
-
-- Android Executor
-- Android Integration
+- Executor interface
+- Android executor
+- Plan execution
+- App launching
+- Calling
+- Messaging
+- Media control
 
 ---
 
 ## Sprint 19
 
-- Sherpa Integration
-- Offline Voice Pipeline
+Sherpa Integration
 
 ---
 
 ## Sprint 20
 
-- Khwab 3 Alpha
+Khwab 3 Alpha

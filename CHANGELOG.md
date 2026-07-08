@@ -1,30 +1,24 @@
 # Changelog
 
-## v0.5.0
+## v0.6.0 - Sprint 17
 
 ### Added
 
-- BrainV2
-- Cognitive Pipeline
-- Reasoning Engine
-- Decision Engine
-- Skill Framework
-- Skill Registry
-- Skill Manager
-- AppSkill
-- ActionType enum
-- Type-safe planning
-- Brain tests
-- SkillManager tests
+- CallSkill
+- MessageSkill
+- MediaSkill
+- SearchSkill
+- SettingsSkill
+- Skill integration tests
+- Skill framework documentation
 
 ### Improved
 
-- Planner migrated to ActionType
-- AppSkill migrated to ActionType
-- Modular architecture
-- Improved testing
+- Skill registry expanded
+- BrainV2 now supports six core capabilities
+- Test coverage increased
 
 ### Verified
 
-- Gradle Build
-- Gradle Test
+- Gradle build successful
+- Gradle tests successful
