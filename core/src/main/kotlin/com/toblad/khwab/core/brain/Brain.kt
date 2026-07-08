@@ -1,11 +1,14 @@
 package com.toblad.khwab.core.brain
 
+import com.toblad.khwab.core.conversation.ContextType
+import com.toblad.khwab.core.conversation.ConversationContext
+import com.toblad.khwab.core.conversation.ConversationMemory
+import com.toblad.khwab.core.extractor.AppNameExtractor
 import com.toblad.khwab.core.parser.IntentParser
-import com.toblad.khwab.core.validator.Validator
 import com.toblad.khwab.core.planner.Planner
 import com.toblad.khwab.core.planner.RuleEngine
 import com.toblad.khwab.core.response.ResponseGenerator
-import com.toblad.khwab.core.extractor.AppNameExtractor
+import com.toblad.khwab.core.validator.Validator
 
 class Brain {
 
@@ -13,6 +16,7 @@ class Brain {
     private val planner = Planner()
     private val rules = RuleEngine()
     private val responses = ResponseGenerator()
+    private val memory = ConversationMemory()
 
     fun process(command: String): BrainResult {
 
@@ -23,6 +27,15 @@ class Brain {
         val plan = planner.createPlan(intent)
 
         val target = AppNameExtractor.extract(command)
+
+        if (valid && supported && target.isNotBlank()) {
+            memory.remember(
+                ConversationContext(
+                    type = ContextType.APP,
+                    value = target
+                )
+            )
+        }
 
         val response =
             if (valid && supported)
