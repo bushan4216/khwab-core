@@ -1,31 +1,34 @@
 package com.toblad.khwab.core.conversation
 
-import com.toblad.khwab.core.context.ContextResult
-import com.toblad.khwab.core.context.ContextService
+import com.toblad.khwab.core.context.ContextResolver
+import com.toblad.khwab.core.context.ContextUpdater
+import com.toblad.khwab.core.model.IntentData
 
 /**
- * Coordinates conversation processing.
+ * Coordinates all conversation-related components.
  */
 class ConversationEngine(
 
-    private val contextService: ContextService
+    private val updater: ContextUpdater = ContextUpdater(),
+    private val resolver: ContextResolver = ContextResolver()
 
 ) {
 
-    /**
-     * Process a conversation request.
-     *
-     * For now this simply attempts to resolve the
-     * entire request as a conversational reference.
-     * Brain integration comes in the next phase.
-     */
-    fun process(
-        request: ConversationRequest
-    ): ContextResult {
+    val session = ConversationSession()
 
-        return contextService.resolve(
-            request.text
+    fun process(intent: IntentData) {
+
+        session.record(intent.originalText)
+
+        updater.update(
+            session.context,
+            intent
         )
-
     }
+
+    fun resolve(reference: String) =
+        resolver.resolve(
+            reference,
+            session.context
+        )
 }

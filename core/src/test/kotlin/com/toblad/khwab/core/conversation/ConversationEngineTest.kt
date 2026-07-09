@@ -1,39 +1,54 @@
 package com.toblad.khwab.core.conversation
 
-import com.toblad.khwab.core.context.ContextEngine
+import com.toblad.khwab.core.model.IntentData
+import com.toblad.khwab.core.model.IntentType
 import kotlin.test.Test
-import kotlin.test.assertFalse
+import kotlin.test.assertEquals
 import kotlin.test.assertTrue
 
 class ConversationEngineTest {
 
     @Test
-    fun resolvesContactReference() {
+    fun updatesSessionContext() {
 
-        val context = ContextEngine()
+        val engine = ConversationEngine()
 
-        context.setActiveContact("John")
-
-        val engine = ConversationEngine(context)
-
-        val result = engine.process(
-            ConversationRequest("him")
+        engine.process(
+            IntentData(
+                intent = IntentType.OPEN_APP,
+                originalText = "WhatsApp"
+            )
         )
 
-        assertTrue(result.resolved)
+        assertEquals(
+            "WhatsApp",
+            engine.session.context.activeApp
+        )
+
+        assertEquals(
+            "WhatsApp",
+            engine.session.history.latest()
+        )
     }
 
     @Test
-    fun unresolvedReferenceReturnsFalse() {
+    fun resolvesPronoun() {
 
-        val engine = ConversationEngine(
-            ContextEngine()
+        val engine = ConversationEngine()
+
+        engine.process(
+            IntentData(
+                intent = IntentType.OPEN_APP,
+                originalText = "WhatsApp"
+            )
         )
 
-        val result = engine.process(
-            ConversationRequest("him")
-        )
+        val result = engine.resolve("it")
 
-        assertFalse(result.resolved)
+        assertTrue(result.resolved)
+        assertEquals(
+            "WhatsApp",
+            result.resolvedReference
+        )
     }
 }
