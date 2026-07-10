@@ -35,6 +35,7 @@ class RamPermanentMemory : PermanentMemory {
         memories[id]?.takeIf { !it.metadata.isDeleted }
 
     override fun update(memory: Memory): Memory {
+
         memories[memory.id] = memory
 
         history.getOrPut(memory.id) { mutableListOf() }.add(
@@ -107,6 +108,35 @@ class RamPermanentMemory : PermanentMemory {
 
     override fun audit(id: MemoryId): List<MemoryAudit> =
         audits[id]?.toList() ?: emptyList()
+
+    override fun explain(id: MemoryId): String {
+
+        val memory = memories[id]
+            ?: return "Memory not found."
+
+        val firstAudit = audits[id]?.firstOrNull()
+
+        return if (firstAudit != null) {
+            "This memory was created on ${firstAudit.timestamp} from ${firstAudit.source}."
+        } else {
+            "No explanation available."
+        }
+    }
+
+    override fun findDuplicate(subject: String): Memory? =
+        memories.values.firstOrNull {
+            !it.metadata.isDeleted &&
+            it.subject.equals(subject, ignoreCase = true)
+        }
+
+    override fun search(query: String): List<Memory> =
+        memories.values.filter {
+            !it.metadata.isDeleted &&
+            (
+                it.subject.contains(query, ignoreCase = true) ||
+                it.value.contains(query, ignoreCase = true)
+            )
+        }
 
     override fun all(): List<Memory> =
         memories.values.filter { !it.metadata.isDeleted }
