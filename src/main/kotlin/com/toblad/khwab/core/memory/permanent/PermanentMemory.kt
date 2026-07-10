@@ -21,5 +21,11 @@ interface PermanentMemory {
 
     fun audit(id: MemoryId): List<MemoryAudit>
 
+    fun explain(id: MemoryId): String
+
+    fun findDuplicate(subject: String): Memory?
+
+    fun search(query: String): List<Memory>
+
     fun all(): List<Memory>
 }
