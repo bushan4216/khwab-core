@@ -1,7 +1,11 @@
 package com.toblad.khwab.core.model
 
 data class PlanStep(
-    val action: String,
+
+    val action: ActionType,
+
     val target: String = "",
+
     val completed: Boolean = false
+
 )

@@ -1,37 +1,32 @@
 package com.toblad.khwab.core.reasoning
 
-import com.toblad.khwab.core.decision.Decision
 import com.toblad.khwab.core.model.IntentData
+import com.toblad.khwab.core.reasoning.rules.ReasoningRuleRegistry
 
 class ReasoningEngine {
 
-    fun evaluate(
-        intent: IntentData,
-        decision: Decision
-    ): ReasoningResult {
+    private val registry = ReasoningRuleRegistry()
 
-        val confidence =
-            if (intent.confidence > 0.7f)
-                intent.confidence
-            else
-                0.5f
+    fun analyze(intent: IntentData): ReasoningResult {
 
-        val reason =
-            when {
-                intent.confidence >= 0.9f ->
-                    "High confidence intent"
+        for (rule in registry.rules) {
 
-                intent.confidence >= 0.7f ->
-                    "Intent matched known patterns"
+            val result = rule.evaluate(intent)
 
-                else ->
-                    "Low confidence, fallback decision"
+            if (result != null) {
+                return result
             }
+        }
 
         return ReasoningResult(
-            decision = decision,
-            confidence = confidence,
-            reason = reason
+            status = ReasoningStatus.READY,
+            confidence = 1.0f,
+            report = ReasoningReport(
+                summary = "All reasoning checks passed.",
+                details = listOf(
+                    "No reasoning rules blocked execution."
+                )
+            )
         )
     }
 }

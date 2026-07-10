@@ -1,42 +1,26 @@
 package com.toblad.khwab.core.decision
 
-import com.toblad.khwab.core.model.IntentData
-import com.toblad.khwab.core.model.IntentType
+import com.toblad.khwab.core.decision.rules.DecisionRuleRegistry
+import com.toblad.khwab.core.reasoning.ReasoningResult
 
 class DecisionEngine {
 
-    fun decide(intent: IntentData): Decision {
+    private val registry = DecisionRuleRegistry()
 
-        val target = intent.entities.firstOrNull()?.value ?: intent.originalText
+    fun decide(result: ReasoningResult): DecisionResult {
 
-        val action = when (intent.intent) {
+        for (rule in registry.rules) {
 
-            IntentType.OPEN_APP ->
-                Action(ActionType.LAUNCH_APP, target)
+            val decision = rule.evaluate(result)
 
-            IntentType.CALL_CONTACT ->
-                Action(ActionType.CALL_CONTACT, target)
-
-            IntentType.PLAY_MEDIA ->
-                Action(ActionType.PLAY_MEDIA, target)
-
-            IntentType.SEARCH_WEB ->
-                Action(ActionType.SEARCH_WEB, target)
-
-            IntentType.SEND_MESSAGE ->
-                Action(ActionType.SEND_MESSAGE, target)
-
-            IntentType.CHANGE_SETTING ->
-                Action(ActionType.CHANGE_SETTING, target)
-
-            else ->
-                Action(ActionType.UNKNOWN, target)
+            if (decision != null) {
+                return decision
+            }
         }
 
-        return Decision(
-            intent = intent.intent,
-            action = action,
-            confidence = 1.0f
+        return DecisionResult(
+            decision = Decision.BLOCK,
+            reason = "No decision rule accepted the reasoning result."
         )
     }
 }
