@@ -10,6 +10,7 @@ class SkillRegistry {
         MessageSkill(),
         MediaSkill(),
         SearchSkill(),
-        SettingsSkill()
+        SettingsSkill(),
+        MemorySkill()
     )
 }

@@ -11,12 +11,12 @@ class RamSessionMemory : SessionMemory {
         memories[memory.subject.lowercase()] = memory
     }
 
-    override fun get(subject: String): Memory? {
-        return memories[subject.lowercase()]
+    override fun get(key: String): Memory? {
+        return memories[key.lowercase()]
     }
 
-    override fun remove(subject: String) {
-        memories.remove(subject.lowercase())
+    override fun remove(key: String) {
+        memories.remove(key.lowercase())
     }
 
     override fun clear() {

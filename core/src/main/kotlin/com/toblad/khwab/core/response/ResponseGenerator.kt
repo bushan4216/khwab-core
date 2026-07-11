@@ -32,6 +32,15 @@ class ResponseGenerator {
             IntentType.GET_DATE ->
                 "Fetching today's date..."
 
+            IntentType.REMEMBER ->
+                "I'll remember that."
+
+            IntentType.RECALL ->
+                "Let me recall that."
+
+            IntentType.FORGET ->
+                "I'll forget that."
+
             IntentType.UNKNOWN ->
                 "Sorry, I don't understand that command yet."
         }

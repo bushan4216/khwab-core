@@ -11,23 +11,23 @@ class RamConversationMemory : ConversationMemory {
         memories[memory.subject.lowercase()] = memory
     }
 
-    override fun recall(subject: String): Memory? {
-        return memories[subject.lowercase()]
+    override fun recall(key: String): Memory? {
+        return memories[key.lowercase()]
     }
 
     override fun recallAll(): List<Memory> {
         return memories.values.toList()
     }
 
-    override fun forget(subject: String) {
-        memories.remove(subject.lowercase())
+    override fun forget(key: String) {
+        memories.remove(key.lowercase())
     }
 
     override fun clear() {
         memories.clear()
     }
 
-    override fun promote(subject: String): Memory? {
-        return memories[subject.lowercase()]
+    override fun promote(key: String): Memory? {
+        return memories[key.lowercase()]
     }
 }

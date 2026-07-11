@@ -2,7 +2,7 @@ package com.toblad.khwab.core.integration
 
 import com.toblad.khwab.core.brain.BrainV2
 import com.toblad.khwab.core.execution.ExecutionEngine
-import com.toblad.khwab.core.execution.MockStepExecutor
+import com.toblad.khwab.core.execution.CoreStepExecutor
 import com.toblad.khwab.core.execution.ExecutionContext
 import com.toblad.khwab.core.model.IntentData
 import com.toblad.khwab.core.model.IntentType
@@ -18,7 +18,7 @@ class BrainExecutionIntegrationTest {
         val brain = BrainV2()
 
         val executionEngine = ExecutionEngine(
-            MockStepExecutor()
+            CoreStepExecutor()
         )
 
         val cognitive = brain.process(

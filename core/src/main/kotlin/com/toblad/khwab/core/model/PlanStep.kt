@@ -6,6 +6,8 @@ data class PlanStep(
 
     val target: String = "",
 
+    val parameters: Map<String, String> = emptyMap(),
+
     val completed: Boolean = false
 
 )

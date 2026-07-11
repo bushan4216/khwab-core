@@ -20,6 +20,9 @@ object IntentCapabilityRegistry {
             IntentType.SEARCH_WEB,
             IntentType.GET_TIME,
             IntentType.GET_DATE,
+            IntentType.REMEMBER,
+            IntentType.RECALL,
+            IntentType.FORGET,
             IntentType.UNKNOWN ->
                 IntentCapability()
         }

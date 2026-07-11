@@ -1,17 +1,20 @@
 package com.toblad.khwab.core.knowledge
 
+import com.toblad.khwab.core.memory.model.MemoryCategory
+import com.toblad.khwab.core.memory.model.Memory
+import com.toblad.khwab.core.memory.permanent.PermanentMemory
+import com.toblad.khwab.core.memory.permanent.internal.RamPermanentMemory
+
 /**
  * Central API for knowledge operations.
+ *
+ * Legacy API preserved while using the new Memory subsystem.
  */
 class KnowledgeEngine(
 
-    private val store: KnowledgeStore = KnowledgeStore()
+    private val memory: PermanentMemory = RamPermanentMemory()
 
 ) {
-
-    private val rememberSkill = RememberSkill(store)
-    private val recallSkill = RecallSkill(store)
-    private val forgetSkill = ForgetSkill(store)
 
     fun remember(
         key: String,
@@ -19,9 +22,17 @@ class KnowledgeEngine(
         type: KnowledgeType = KnowledgeType.USER_PREFERENCE
     ): KnowledgeRecord {
 
-        return rememberSkill.remember(
-            key = key,
-            value = value,
+        val saved = memory.create(
+            Memory.createPermanent(
+                subject = key,
+                value = value,
+                category = MemoryCategory.PREFERENCE
+            )
+        )
+
+        return KnowledgeRecord(
+            key = saved.subject,
+            value = saved.value,
             type = type
         )
     }
@@ -30,18 +41,35 @@ class KnowledgeEngine(
         key: String
     ): KnowledgeRecord? {
 
-        return recallSkill.recall(key)
+        return memory.findDuplicate(key)?.let {
+            KnowledgeRecord(
+                key = it.subject,
+                value = it.value,
+                type = KnowledgeType.USER_PREFERENCE
+            )
+        }
     }
 
     fun forget(
         key: String
     ): Boolean {
 
-        return forgetSkill.forget(key)
+        val existing = memory.findDuplicate(key)
+            ?: return false
+
+        return memory.delete(existing.id)
     }
 
     fun records(): List<KnowledgeRecord> {
 
-        return store.all()
+        return memory
+            .all()
+            .map {
+                KnowledgeRecord(
+                    key = it.subject,
+                    value = it.value,
+                    type = KnowledgeType.USER_PREFERENCE
+                )
+            }
     }
 }

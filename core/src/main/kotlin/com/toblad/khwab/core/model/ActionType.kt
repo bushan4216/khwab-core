@@ -24,5 +24,11 @@ enum class ActionType {
 
     GET_DATE,
 
+    REMEMBER,
+
+    RECALL,
+
+    FORGET,
+
     UNKNOWN
 }

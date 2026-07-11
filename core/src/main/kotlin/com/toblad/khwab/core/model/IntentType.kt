@@ -9,5 +9,10 @@ enum class IntentType {
     SEARCH_WEB,
     GET_TIME,
     GET_DATE,
+
+    REMEMBER,
+    RECALL,
+    FORGET,
+
     UNKNOWN
 }
