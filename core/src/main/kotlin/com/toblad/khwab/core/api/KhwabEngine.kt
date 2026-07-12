@@ -1,15 +1,17 @@
 package com.toblad.khwab.core.api
 
 import com.toblad.khwab.core.brain.CognitiveCoordinator
+import com.toblad.khwab.core.mapper.CognitiveResponseMapper
 
 /**
  * Public SDK entry point.
  *
- * Platform applications should interact with Khwab
- * exclusively through this class.
+ * Platform applications should interact with the
+ * Khwab cognitive engine exclusively through this class.
  */
 class KhwabEngine(
     private val coordinator: CognitiveCoordinator = CognitiveCoordinator(),
+    private val mapper: CognitiveResponseMapper = CognitiveResponseMapper(),
     private val config: KhwabConfig = KhwabConfig()
 ) {
 
@@ -20,11 +22,6 @@ class KhwabEngine(
 
         val result = coordinator.process(request.text)
 
-        return KhwabResponse(
-            success = true,
-            responseText = "Request processed successfully.",
-            confidence = 1.0f,
-            needsConfirmation = false
-        )
+        return mapper.map(result)
     }
 }
